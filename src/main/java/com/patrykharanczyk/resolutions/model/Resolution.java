@@ -1,34 +1,43 @@
 package com.patrykharanczyk.resolutions.model;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+
+@Entity
+@Table(name="resolutions")
 public class Resolution {
-    String id;
-    String ownerId;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    long id;
+
+    @JsonIgnore
+    @ManyToOne(optional = false)
+    @JoinColumn(name="user_id", referencedColumnName = "id", nullable = false)
+    private User user;
+
+    @Column(name="name", nullable = false)
     String name;
     String description;
     boolean isCompleted;
 
-    public Resolution(String id, String ownerId, String name, String description, boolean isCompleted) {
-        this.id = id;
-        this.ownerId = ownerId;
+    public Resolution() {
+    }
+
+    public Resolution(User user, String name, String description, boolean isCompleted) {
+        this.user = user;
         this.name = name;
         this.description = description;
         this.isCompleted = isCompleted;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
-    }
-
-    public String getOwnerId() {
-        return ownerId;
-    }
-
-    public void setOwnerId(String ownerId) {
-        this.ownerId = ownerId;
     }
 
     public String getName() {
@@ -53,5 +62,13 @@ public class Resolution {
 
     public void setCompleted(boolean completed) {
         isCompleted = completed;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

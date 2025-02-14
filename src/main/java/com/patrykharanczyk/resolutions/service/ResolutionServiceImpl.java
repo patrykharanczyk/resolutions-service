@@ -16,6 +16,6 @@ public class ResolutionServiceImpl implements ResolutionService {
 
     @Override
     public List<Resolution> getResolutions() {
-        return resolutionRepository.getResolutions();
+        return resolutionRepository.findAll();
     }
 }
