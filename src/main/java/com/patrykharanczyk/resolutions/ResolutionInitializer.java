@@ -6,24 +6,27 @@ import com.patrykharanczyk.resolutions.repository.ResolutionRepository;
 import com.patrykharanczyk.resolutions.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.SmartInitializingSingleton;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ResolutionInitializer implements SmartInitializingSingleton {
-    private ResolutionRepository resolutions;
-    private UserRepository users;
+    private final ResolutionRepository resolutions;
+    private final UserRepository users;
+    private final PasswordEncoder passwordEncoder;
 
-    public ResolutionInitializer(ResolutionRepository resolutions, UserRepository users) {
+    public ResolutionInitializer(ResolutionRepository resolutions, UserRepository users, PasswordEncoder passwordEncoder) {
         this.resolutions = resolutions;
         this.users = users;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     @Transactional
     public void afterSingletonsInstantiated() {
         System.out.println("Initializing resolutions");
-        User tester1 = new User("tester 1", "pass");
-        User tester2 = new User("tester 2", "pass");
+        User tester1 = new User("tester 1", this.passwordEncoder.encode("pass1"));
+        User tester2 = new User("tester 2", this.passwordEncoder.encode("pass2"));
 
         this.users.save(tester1);
         this.users.save(tester2);
