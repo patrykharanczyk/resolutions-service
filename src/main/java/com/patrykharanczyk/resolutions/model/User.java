@@ -32,6 +32,15 @@ public class User {
         this.password = password;
     }
 
+    public User(User user) {
+        this.id = user.id;
+        this.username = user.username;
+        this.password = user.password;
+        this.enabled = user.enabled;
+        this.resolutions = user.resolutions;
+        this.userAuthorities = new HashSet<>(user.userAuthorities);
+    }
+
     public long getId() {
         return id;
     }

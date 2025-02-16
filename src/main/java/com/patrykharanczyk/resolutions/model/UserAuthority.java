@@ -9,7 +9,6 @@ public class UserAuthority {
     long id;
 
     @ManyToOne
-    @JoinColumn(name="username", referencedColumnName = "username")
     User user;
 
     String authority;
