@@ -3,6 +3,7 @@ package com.patrykharanczyk.resolutions.model;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -15,8 +16,8 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     Set<Resolution> resolutions;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    Set<UserAuthority> userAuthorities;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    Set<UserAuthority> userAuthorities = new HashSet<>();
 
     @Column(name="username", unique = true, nullable = false)
     String username;

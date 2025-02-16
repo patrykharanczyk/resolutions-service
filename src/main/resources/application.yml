@@ -13,4 +13,12 @@ spring:
   sql:
     init:
       mode: always
-logging.level.org.hibernate.sql: DEBUG
+logging:
+  level:
+    org:
+      hibernate:
+        sql: DEBUG
+        type: TRACE
+        orm:
+            jdbc:
+              bind: TRACE
