@@ -3,9 +3,7 @@ package com.patrykharanczyk.resolutions.model;
 
 import jakarta.persistence.*;
 
-import java.util.List;
 import java.util.Set;
-import java.util.UUID;
 
 @Entity
 @Table(name="users")
