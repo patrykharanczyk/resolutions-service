@@ -15,6 +15,9 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     Set<Resolution> resolutions;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    Set<UserAuthority> userAuthorities;
+
     @Column(name="username", unique = true, nullable = false)
     String username;
     String password;
@@ -66,5 +69,17 @@ public class User {
 
     public void setResolutions(Set<Resolution> resolutions) {
         this.resolutions = resolutions;
+    }
+
+    public Set<UserAuthority> getUserAuthorities() {
+        return userAuthorities;
+    }
+
+    public void setUserAuthorities(Set<UserAuthority> userAuthorities) {
+        this.userAuthorities = userAuthorities;
+    }
+
+    public void addAuthority(String userAuthority) {
+        this.userAuthorities.add(new UserAuthority(this, userAuthority));
     }
 }

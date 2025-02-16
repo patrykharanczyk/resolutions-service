@@ -28,6 +28,10 @@ public class ResolutionInitializer implements SmartInitializingSingleton {
         User tester1 = new User("tester 1", this.passwordEncoder.encode("pass1"));
         User tester2 = new User("tester 2", this.passwordEncoder.encode("pass2"));
 
+        tester1.addAuthority("READ");
+        tester2.addAuthority("READ");
+        tester2.addAuthority("WRITE");
+
         this.users.save(tester1);
         this.users.save(tester2);
 
