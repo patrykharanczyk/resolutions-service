@@ -14,7 +14,6 @@ public class Resolution {
 
     @JsonIgnore
     @ManyToOne(optional = false)
-    @JoinColumn(name="user_id", referencedColumnName = "id", nullable = false)
     private User user;
 
     @Column(name="name", nullable = false)
