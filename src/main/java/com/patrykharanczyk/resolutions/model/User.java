@@ -16,7 +16,7 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     Set<Resolution> resolutions;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     Set<UserAuthority> userAuthorities = new HashSet<>();
 
     @Column(name="username", unique = true, nullable = false)
