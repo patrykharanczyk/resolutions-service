@@ -1,6 +1,11 @@
 spring:
   application:
     name: resolutions
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8081
   datasource:
     url: jdbc:postgresql://localhost:5432/root
     username: root
@@ -22,3 +27,4 @@ logging:
         orm:
             jdbc:
               bind: TRACE
+#      springframework.security: DEBUG
