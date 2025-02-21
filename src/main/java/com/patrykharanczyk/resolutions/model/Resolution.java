@@ -1,7 +1,6 @@
 package com.patrykharanczyk.resolutions.model;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,10 +11,6 @@ public class Resolution {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
-    @JsonIgnore
-    @ManyToOne(optional = false)
-    private User user;
-
     @Column(name="name", nullable = false)
     String name;
     String description;
@@ -24,8 +19,7 @@ public class Resolution {
     public Resolution() {
     }
 
-    public Resolution(User user, String name, String description, boolean isCompleted) {
-        this.user = user;
+    public Resolution(String name, String description, boolean isCompleted) {
         this.name = name;
         this.description = description;
         this.isCompleted = isCompleted;
@@ -61,13 +55,5 @@ public class Resolution {
 
     public void setCompleted(boolean completed) {
         isCompleted = completed;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }

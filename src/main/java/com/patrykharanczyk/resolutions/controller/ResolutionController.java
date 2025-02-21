@@ -20,7 +20,7 @@ public class ResolutionController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAuthority('SCOPE_READ')")
+    @PreAuthorize("hasAuthority('SCOPE_resolutions:read')")
     public List<Resolution> getResolutions(){
         return resolutionService.getResolutions();
     }

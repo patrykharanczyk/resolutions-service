@@ -4,8 +4,10 @@ spring:
   security:
     oauth2:
       resourceserver:
-        jwt:
-          issuer-uri: http://localhost:8081
+        opaquetoken:
+          introspection-uri: http://localhost:9000/oauth2/introspect
+          client-id: resolutions-client
+          client-secret: secret
   datasource:
     url: jdbc:postgresql://localhost:5432/root
     username: root
