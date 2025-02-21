@@ -6,8 +6,8 @@ spring:
       resourceserver:
         opaquetoken:
           introspection-uri: http://localhost:9000/oauth2/introspect
-          client-id: resolutions-client
-          client-secret: secret
+          client-id: resource-server
+          client-secret: resolutions321
   datasource:
     url: jdbc:postgresql://localhost:5432/root
     username: root
