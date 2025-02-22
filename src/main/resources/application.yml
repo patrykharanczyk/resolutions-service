@@ -1,6 +1,13 @@
 spring:
   application:
     name: resolutions
+  security:
+    oauth2:
+      resourceserver:
+        opaquetoken:
+          introspection-uri: http://localhost:9000/oauth2/introspect
+          client-id: resource-server
+          client-secret: resolutions321
   datasource:
     url: jdbc:postgresql://localhost:5432/root
     username: root
@@ -22,3 +29,4 @@ logging:
         orm:
             jdbc:
               bind: TRACE
+#      springframework.security: DEBUG

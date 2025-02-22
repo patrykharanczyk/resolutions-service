@@ -2,6 +2,7 @@ package com.patrykharanczyk.resolutions.controller;
 
 import com.patrykharanczyk.resolutions.model.Resolution;
 import com.patrykharanczyk.resolutions.service.ResolutionService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,7 @@ public class ResolutionController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAuthority('SCOPE_resolutions:read')")
     public List<Resolution> getResolutions(){
         return resolutionService.getResolutions();
     }
