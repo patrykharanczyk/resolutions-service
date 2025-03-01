@@ -1,4 +1,4 @@
-package com.patrykharanczyk.resolutions.model;
+package com.patrykharanczyk.resolutions.model.resolution;
 
 
 import jakarta.persistence.*;

@@ -1,6 +1,6 @@
 package com.patrykharanczyk.resolutions;
 
-import com.patrykharanczyk.resolutions.model.Resolution;
+import com.patrykharanczyk.resolutions.model.resolution.Resolution;
 import com.patrykharanczyk.resolutions.repository.ResolutionRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.SmartInitializingSingleton;

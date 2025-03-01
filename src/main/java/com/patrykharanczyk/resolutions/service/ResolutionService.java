@@ -1,15 +1,15 @@
 package com.patrykharanczyk.resolutions.service;
 
-import com.patrykharanczyk.resolutions.model.Resolution;
+import com.patrykharanczyk.resolutions.model.resolution.ResolutionDto;
 
 import java.util.List;
 
 public interface ResolutionService {
-    List<Resolution> getResolutions();
+    List<ResolutionDto> getResolutions();
 
-    Resolution addResolution(Resolution resolution);
+    ResolutionDto addResolution(ResolutionDto resolution);
 
-    Resolution updateResolution(long id, Resolution resolution);
+    ResolutionDto updateResolution(long id, ResolutionDto resolution);
 
     void deleteResolution(long id);
 }
