@@ -25,9 +25,21 @@ public class ResolutionController {
     public List<Resolution> getResolutions(){
         return resolutionService.getResolutions();
     }
-    
+
     @PostMapping
     public Resolution addResolution(@RequestBody Resolution resolution){
         return repo.save(resolution);
+    }
+
+    @PutMapping("/{id}")
+    @PreAuthorize("hasAuthority('SCOPE_resolutions:write')")
+    public Resolution updateResolution(@PathVariable("id") Long id, @RequestBody Resolution resolution){
+        return resolutionService.updateResolution(id, resolution);
+    }
+
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('SCOPE_resolutions:write')")
+    public void deleteResolution(@PathVariable("id") long id){
+        resolutionService.deleteResolution(id);
     }
 }
