@@ -27,6 +27,7 @@ public class ResolutionController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAuthority('SCOPE_resolutions:write')")
     public Resolution addResolution(@RequestBody Resolution resolution){
         return repo.save(resolution);
     }
