@@ -1,11 +1,10 @@
 package com.patrykharanczyk.resolutions.controller;
 
 import com.patrykharanczyk.resolutions.model.Resolution;
+import com.patrykharanczyk.resolutions.repository.ResolutionRepository;
 import com.patrykharanczyk.resolutions.service.ResolutionService;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,14 +13,21 @@ import java.util.List;
 public class ResolutionController {
 
     private final ResolutionService resolutionService;
+    private final ResolutionRepository repo;
 
-    public ResolutionController(ResolutionService resolutionService) {
+    public ResolutionController(ResolutionService resolutionService, ResolutionRepository repo) {
         this.resolutionService = resolutionService;
+        this.repo = repo;
     }
 
     @GetMapping
     @PreAuthorize("hasAuthority('SCOPE_resolutions:read')")
     public List<Resolution> getResolutions(){
         return resolutionService.getResolutions();
+    }
+    
+    @PostMapping
+    public Resolution addResolution(@RequestBody Resolution resolution){
+        return repo.save(resolution);
     }
 }
